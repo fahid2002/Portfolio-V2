@@ -14,7 +14,7 @@ export default function Navbar() {
 
   const close = () => setMobile(false);
 
-  const navItems = ['home', 'about', 'skills', 'education', 'projects', 'ai', 'contact'];
+  const navItems = ['home', 'about', 'skills', 'education', 'projects', 'contact'];
 
   return (
     <>

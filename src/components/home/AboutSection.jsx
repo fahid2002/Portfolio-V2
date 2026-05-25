@@ -1,6 +1,43 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { profile } from '../../data/profile';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function AboutSection() {
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    if (!statsRef.current) return;
+
+    const counters = statsRef.current.querySelectorAll('.stat-n');
+
+    counters.forEach((counter) => {
+      const target = Number(counter.dataset.target);
+      const countObject = { value: 0 };
+
+      gsap.to(countObject, {
+        value: target,
+        duration: 1.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: statsRef.current,
+          start: 'top 85%',
+          once: true,
+        },
+        onUpdate: () => {
+          counter.textContent = `${Math.floor(countObject.value)}+`;
+        },
+        onComplete: () => {
+          counter.textContent = `${target}+`;
+        },
+      });
+    });
+  }, []);
+
   return (
     <section className="about-sec" id="about">
       <div className="container">
@@ -29,19 +66,25 @@ export default function AboutSection() {
               my problem-solving skills through real projects.
             </p>
 
-            <div className="about-stats">
+            <div className="about-stats" ref={statsRef}>
               <div className="stat-box">
-                <div className="stat-n">10+</div>
+                <div className="stat-n" data-target="10">
+                  0+
+                </div>
                 <div className="stat-l">Projects</div>
               </div>
 
               <div className="stat-box">
-                <div className="stat-n">14+</div>
+                <div className="stat-n" data-target="14">
+                  0+
+                </div>
                 <div className="stat-l">Technologies</div>
               </div>
 
               <div className="stat-box">
-                <div className="stat-n">2+</div>
+                <div className="stat-n" data-target="2">
+                  0+
+                </div>
                 <div className="stat-l">Yrs Building</div>
               </div>
             </div>
@@ -50,10 +93,10 @@ export default function AboutSection() {
           <div>
             <div className="about-panel">
               <div className="about-quote">
-                &quot;If you don&apos;t take risks, you can&apos;t create a future.&quot;
+                &quot;Code is like humor.<br/>  When you have to explain it, it&apos;s bad.&quot;
               </div>
 
-              <div className="about-quote-attr">— Monkey D. Luffy</div>
+              <div className="about-quote-attr">— Cory House</div>
 
               <div className="about-chips">
                 <span className="tag">📍 Dhaka, BD</span>

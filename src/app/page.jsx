@@ -5,7 +5,7 @@ import AboutSection from '../components/home/AboutSection';
 import SkillsSection from '../components/home/SkillsSection';
 import EducationSection from '../components/home/EducationSection';
 import ProjectsSection from '../components/home/ProjectsSection';
-import AISection from '../components/home/AISection';
+  {/* import AISection from '../components/home/AISection'; */}
 import ContactSection from '../components/home/ContactSection';
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         <SkillsSection />
         <EducationSection />
         <ProjectsSection />
-        <AISection />
+        {/* <AISection /> */}
         <ContactSection />
       </main>
 

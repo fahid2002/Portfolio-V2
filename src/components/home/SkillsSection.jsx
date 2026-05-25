@@ -1,6 +1,23 @@
+'use client';
+
+import { useState } from 'react';
 import { profile } from '../../data/profile';
 
 export default function SkillsSection() {
+  const [active, setActive] = useState(0);
+
+  const handleClick = (index) => {
+    setActive(index);
+
+    const section = document.getElementById(`sg${index + 1}`);
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  };
+
   return (
     <section className="skills-sec" id="skills">
       <div className="container">
@@ -17,7 +34,11 @@ export default function SkillsSection() {
           <div className="skills-sidebar">
             <ul>
               {profile.skills.map((skillGroup, index) => (
-                <li className={index === 0 ? 'on' : ''} key={skillGroup.title}>
+                <li
+                  className={active === index ? 'on' : ''}
+                  key={skillGroup.title}
+                  onClick={() => handleClick(index)}
+                >
                   {String(index + 1).padStart(2, '0')} {skillGroup.title}
                 </li>
               ))}
@@ -26,7 +47,11 @@ export default function SkillsSection() {
 
           <div className="skills-content">
             {profile.skills.map((skillGroup, index) => (
-              <div className="sg" id={`sg${index + 1}`} key={skillGroup.title}>
+              <div
+                className={`sg ${active === index ? 'sg-active' : ''}`}
+                id={`sg${index + 1}`}
+                key={skillGroup.title}
+              >
                 <div className="sg-head">
                   <span className="sg-num">
                     {String(index + 1).padStart(2, '0')}
