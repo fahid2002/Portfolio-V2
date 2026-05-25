@@ -2344,7 +2344,7 @@ footer {
   display:flex !important;
   flex-direction:column !important;
   font-size:clamp(4rem,7.6vw,6.7rem) !important;
-  line-height:.82 !important;
+  line-height:1.05 !important;
   letter-spacing:-0.025em !important;
   text-transform:uppercase;
   font-weight:900 !important;
@@ -2563,7 +2563,7 @@ footer {
   .hero-name{
     font-size:clamp(3.6rem,6.3vw,5.6rem) !important;
 
-    line-height:.92 !important;
+    line-height:1.08 !important;
 
     letter-spacing:-0.025em !important;
 
