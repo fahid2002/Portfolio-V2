@@ -81,15 +81,28 @@ body {
     background 0.35s,
     color 0.35s;
 }
-::-webkit-scrollbar {
-  width: 3px;
+/* ── SCROLLBAR ─────────────────────── */
+html::-webkit-scrollbar {
+  width: 8px;
 }
-::-webkit-scrollbar-thumb {
-  background: var(--hi);
+
+html::-webkit-scrollbar-track {
+  background: var(--bg2);
 }
-::selection {
-  background: var(--hi);
-  color: var(--bg);
+
+html::-webkit-scrollbar-thumb {
+  background: var(--text-m);
+  border-radius: 4px;
+  border: 2px solid var(--bg2);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--text-h);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-m) var(--bg2);
 }
 
 /* ── ANIMATIONS ─────────────────────── */
@@ -262,7 +275,7 @@ nav {
 }
 .nav-logo {
   font-family: var(--ff-h);
-  font-size: 1.35rem;
+  font-size: 1.75rem;
   font-weight: 800;
   color: var(--text-h);
   text-decoration: none;
@@ -278,10 +291,11 @@ nav {
 }
 .nav-links a {
   font-family: var(--ff-mono);
-  font-size: 0.67rem;
-  color: var(--text-m);
+  font-size: 0.80rem;
+  font-weight: 100;
+  color: var(--text-h); /* ← changed from var(--text-m) */
   text-decoration: none;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   position: relative;
   transition: color 0.25s;
 }
@@ -725,19 +739,12 @@ nav {
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-
-  font-family:'Anton',sans-serif;
-
+  font-family:'Poppins',sans-serif;
   font-size:clamp(4rem,8vw,6.8rem);
-
   line-height:.92;
-
   letter-spacing:-0.025em;
-
   font-weight:400;
-
   margin-bottom:1.6rem;
-
   text-transform:uppercase;
 }
 
@@ -2256,9 +2263,6 @@ footer {
     linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px) !important;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--hi) !important;
-}
 
 
 /* ===== HERO FINAL FIX: split name, bold text, badge under photo ===== */
@@ -2340,7 +2344,7 @@ footer {
 
 /* FAHID and HASAN as two separate bold lines */
 .hero-name{
-  font-family:'Anton',sans-serif !important;
+  font-family:'Poppins',sans-serif !important;
   display:flex !important;
   flex-direction:column !important;
   font-size:clamp(4rem,7.6vw,6.7rem) !important;
