@@ -11,16 +11,17 @@ export default function CursorGlow() {
     const glow = document.createElement('div');
     glow.classList.add('cursor-glow');
 
+    const getTheme = () => document.documentElement.getAttribute('data-theme');
+
     const getGradient = () => {
-      const theme = document.documentElement.getAttribute('data-theme');
+      const theme = getTheme();
       if (theme === 'light') {
-        // Dark color for light mode
         return 'radial-gradient(circle, rgba(40, 40, 40, 0.25) 0%, rgba(60, 60, 60, 0.12) 30%, rgba(80, 80, 80, 0.04) 60%, transparent 100%)';
-      } else {
-        // Light color for dark mode
-        return 'radial-gradient(circle, rgba(200, 220, 255, 0.2) 0%, rgba(180, 200, 255, 0.1) 30%, rgba(150, 180, 255, 0.03) 60%, transparent 100%)';
       }
+      return 'radial-gradient(circle, rgba(200, 220, 255, 0.2) 0%, rgba(180, 200, 255, 0.1) 30%, rgba(150, 180, 255, 0.03) 60%, transparent 100%)';
     };
+
+    const getBlendMode = () => (getTheme() === 'light' ? 'multiply' : 'lighten');
 
     // Set each property individually
     glow.style.position = 'fixed';
@@ -33,7 +34,7 @@ export default function CursorGlow() {
     glow.style.background = getGradient();
     glow.style.opacity = '0';
     glow.style.transition = 'opacity 0.2s ease-out';
-    glow.style.mixBlendMode = 'lighten';
+    glow.style.mixBlendMode = getBlendMode();
     glow.style.filter = 'blur(50px)';
 
     document.body.appendChild(glow);
@@ -43,8 +44,9 @@ export default function CursorGlow() {
     let glowX = 0, glowY = 0;
     let started = false;
 
-    const updateGradient = () => {
+    const updateAppearance = () => {
       glow.style.background = getGradient();
+      glow.style.mixBlendMode = getBlendMode();
     };
 
     const onMove = (e) => {
@@ -74,7 +76,7 @@ export default function CursorGlow() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'data-theme') {
-          updateGradient();
+          updateAppearance();
         }
       });
     });
@@ -84,6 +86,7 @@ export default function CursorGlow() {
     document.addEventListener('mousemove', onMove);
     document.addEventListener('mouseleave', onLeave);
     raf = requestAnimationFrame(animate);
+    updateAppearance();
 
     return () => {
       document.removeEventListener('mousemove', onMove);
