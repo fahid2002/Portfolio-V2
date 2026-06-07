@@ -7,6 +7,7 @@ import EducationSection from '../components/home/EducationSection';
 import ProjectsSection from '../components/home/ProjectsSection';
   {/* import AISection from '../components/home/AISection'; */}
 import ContactSection from '../components/home/ContactSection';
+import CursorGlow from '../components/home/CursorGlow';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <SkillsSection />
         <EducationSection />
         <ProjectsSection />
+        <CursorGlow />
         {/* <AISection /> */}
         <ContactSection />
       </main>
