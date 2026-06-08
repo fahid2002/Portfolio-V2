@@ -3,8 +3,8 @@ import Footer from '../components/layout/Footer';
 import HeroSection from '../components/home/HeroSection';
 import AboutSection from '../components/home/AboutSection';
 import SkillsSection from '../components/home/SkillsSection';
-import EducationSection from '../components/home/EducationSection';
-import ProjectsSection from '../components/home/ProjectsSection';
+import FeaturedEducationSection from '../components/home/FeaturedEducationSection';
+import FeaturedProjectsSection from '../components/home/FeaturedProjectsSection';
   {/* import AISection from '../components/home/AISection'; */}
 import ContactSection from '../components/home/ContactSection';
 import CursorGlow from '../components/home/CursorGlow';
@@ -18,8 +18,8 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
-        <EducationSection />
-        <ProjectsSection />
+        <FeaturedEducationSection />
+        <FeaturedProjectsSection />
         <CursorGlow />
         {/* <AISection /> */}
         <ContactSection />

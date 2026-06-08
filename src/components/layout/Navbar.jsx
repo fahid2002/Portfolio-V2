@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { profile } from '../../data/profile';
 
 export default function Navbar() {
@@ -14,21 +15,28 @@ export default function Navbar() {
 
   const close = () => setMobile(false);
 
-  const navItems = ['home', 'about', 'skills', 'education', 'projects', 'contact'];
+  const navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Skills', path: '/skills' },
+    { label: 'Education', path: '/education' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'Contact', path: '/contact' }
+  ];
 
   return (
     <>
       <nav id="navbar">
-        <a href="/#top" className="nav-logo">
+        <Link href="/" className="nav-logo">
           fahid<span>.</span>
-        </a>
+        </Link>
 
         <ul className="nav-links">
           {navItems.map((item) => (
-            <li key={item}>
-              <a href={`/#${item}`}>
-                {item === 'ai' ? 'AI' : item[0].toUpperCase() + item.slice(1)}
-              </a>
+            <li key={item.path}>
+              <Link href={item.path}>
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>
@@ -60,9 +68,9 @@ export default function Navbar() {
 
       <div className={`mobile-nav ${mobile ? 'open' : ''}`}>
         {navItems.map((item) => (
-          <a key={item} href={`/#${item}`} onClick={close}>
-            {item === 'ai' ? 'AI' : item[0].toUpperCase() + item.slice(1)}
-          </a>
+          <Link key={item.path} href={item.path} onClick={close}>
+            {item.label}
+          </Link>
         ))}
       </div>
 
