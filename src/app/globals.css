@@ -1300,6 +1300,8 @@ nav {
   border: 1px solid var(--card-border);
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
   transition: all 0.32s var(--ease);
   cursor: pointer;
   border-radius: 12px;
@@ -1350,6 +1352,9 @@ nav {
 }
 .pj-body {
   padding: 1.1rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 .pj-name {
   font-family: var(--ff-p);
@@ -1378,6 +1383,7 @@ nav {
   display: flex;
   gap: 0.45rem;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 .pj-link {
   font-family: var(--ff-mono);
