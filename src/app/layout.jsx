@@ -4,6 +4,11 @@ export const metadata = {
   title: 'Fahid Hasan - MERN Stack Developer',
   description:
     'Personal portfolio of Fahid Hasan, MERN Stack Developer from Dhaka, Bangladesh.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }) {

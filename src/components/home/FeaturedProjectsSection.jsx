@@ -12,7 +12,7 @@ export default function FeaturedProjectsSection() {
   }, []);
 
   // Featured project slugs
-  const featuredSlugs = ['docappoint', 'tilehaus', 'keenkeeper'];
+  const featuredSlugs = ['docappoint', 'studyco', 'eventpilot', 'promptgrid'];
   const featuredProjects = projects.filter((p) => featuredSlugs.includes(p.slug));
 
   // Function to truncate description
