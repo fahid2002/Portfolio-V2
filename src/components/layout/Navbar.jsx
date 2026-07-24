@@ -27,14 +27,14 @@ export default function Navbar() {
   return (
     <>
       <nav id="navbar">
-        <Link href="/" className="nav-logo">
+        <Link href="/" className="nav-logo" onClick={close}>
           fahid<span>.</span>
         </Link>
 
         <ul className="nav-links">
           {navItems.map((item) => (
             <li key={item.path}>
-              <Link href={item.path}>
+              <Link href={item.path} onClick={close}>
                 {item.label}
               </Link>
             </li>
