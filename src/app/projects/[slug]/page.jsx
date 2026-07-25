@@ -5,14 +5,16 @@ import Footer from '../../../components/layout/Footer';
 import { projects } from '../../../data/projects';
 
 export function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+  return projects
+    .filter((project) => !project.hidden)
+    .map((project) => ({
+      slug: project.slug,
+    }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const project = projects.find((item) => item.slug === slug);
+  const project = projects.find((item) => item.slug === slug && !item.hidden);
 
   return {
     title: project ? `${project.title} — Fahid Hasan` : 'Project — Fahid Hasan',
@@ -24,7 +26,7 @@ export async function generateMetadata({ params }) {
 
 export default async function ProjectDetail({ params }) {
   const { slug } = await params;
-  const project = projects.find((item) => item.slug === slug);
+  const project = projects.find((item) => item.slug === slug && !item.hidden);
 
   if (!project) {
     notFound();

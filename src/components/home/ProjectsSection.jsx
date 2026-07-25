@@ -11,7 +11,8 @@ export default function ProjectsSection() {
     setMounted(true);
   }, []);
 
-  const groups = projects.reduce((acc, project) => {
+  const visibleProjects = projects.filter((project) => !project.hidden);
+  const groups = visibleProjects.reduce((acc, project) => {
     if (!acc[project.category]) {
       acc[project.category] = [];
     }
